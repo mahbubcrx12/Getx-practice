@@ -57,18 +57,33 @@ class HomePage extends StatelessWidget {
                                               child: Text('Add to Cart'),
                                             ),
                                           ],
-                                        )
+                                        ),
+                                        Obx(() => IconButton(onPressed: (){
+                                          controller.products[index].isFavourate.toggle();
+                                        },
+                                            icon: controller.products[index].isFavourate.value
+                                            ? Icon(Icons.check_box_rounded)
+                                                :Icon(Icons.check_box_outline_blank_outlined)
+                                        ))
                                       ],
                                     ),
                                   ])));
                     });
               }),
             ),
-            GetX<CartController>(builder: (controller) {
+            // GetBuilder<CartController>(builder: (controller){
+            //   return Text("Total ammount: \$ ${controller.testAmount}");
+            // }),
+            // GetX<CartController>(builder: (controller) {
+            //   return Text(
+            //     "Total ammount: ${controller.totalPrice}",
+            //     style: TextStyle(fontSize: 20, color: Colors.white),
+            //   );
+            // }),
+            Obx(() {
               return Text(
-                "Total ammount: ${controller.totalPrice}",
-                style: TextStyle(fontSize: 20, color: Colors.white),
-              );
+                      "Total ammount: ${cartController.totalPrice}",
+                      style: TextStyle(fontSize: 20, color: Colors.white),);
             }),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -86,6 +101,7 @@ class HomePage extends StatelessWidget {
                         Icons.add_shopping_cart,
                         color: Colors.white,
                       ),
+
                       GetX<CartController>(builder: (controller) {
                         return Text(
                         controller.count.toString(),
