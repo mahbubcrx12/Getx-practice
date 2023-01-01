@@ -3,6 +3,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:getx_practice/controller/shopx_controller.dart';
 import 'package:getx_practice/model/shopx_model.dart';
+import 'package:getx_practice/screen/settings_page.dart';
 
 class ShopX extends StatelessWidget {
 
@@ -19,6 +20,10 @@ final ShopXcontroller shopXcontroller=Get.put(ShopXcontroller());
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
           Icon(Icons.arrow_back_ios),
+          Spacer(),
+          IconButton(onPressed: (){
+            Get.to(SettingsPage());
+          }, icon: Icon(Icons.settings)),
           Icon(Icons.shopping_cart)
           ],),
         ),
